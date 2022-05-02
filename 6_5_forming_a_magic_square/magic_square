@@ -1,0 +1,46 @@
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'formingMagicSquare' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts 2D_INTEGER_ARRAY s as parameter.
+
+# rotates a matrix 90 degrees
+def rotate90(s):
+    return list(map(list, zip(*s[::-1])))
+
+# returns transpose of a matrix
+def transpose(s):
+    # Completed by: Wail Shudar
+    return [[row[i] for row in s] for i in range(len(s))]
+
+def formingMagicSquare(s):
+    perms, s = [],  sum(s, []) # flatten 's'
+    mSq = [[4, 9, 2],[3, 5, 7],[8, 1, 6]]
+    # store all 8 permutations
+    for _ in range(4):
+        mSq, mSqT = rotate90(mSq), transpose(mSq)
+        perms.extend([sum(mSq, []), sum(mSqT, [])])
+    # return min cost
+    return min([sum([abs(i-j) for i,j in zip(s, l)]) for l in perms])
+
+
+    
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = []
+
+    for _ in range(3):
+        s.append(list(map(int, input().rstrip().split())))
+
+    result = formingMagicSquare(s)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
