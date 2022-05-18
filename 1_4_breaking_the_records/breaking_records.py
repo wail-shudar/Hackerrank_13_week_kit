@@ -25,6 +25,8 @@ def breakingRecords(scores):
             records[0] += 1
 
     return records
+
+    
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
