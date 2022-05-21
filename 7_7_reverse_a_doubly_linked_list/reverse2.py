@@ -56,7 +56,7 @@ def print_doubly_linked_list(node, sep, fptr):
 #
 
 def reverse(llist):
-    lldata, llreversed = [], SinglyLinkedList()
+    lldata, llreversed = [], DoublyLinkedList()
     
     while llist:
         lldata.append(llist.data)
