@@ -5,7 +5,7 @@ import os
 import random
 import re
 import sys
-from itertools import combinations
+
 #
 # Complete the 'equalStacks' function below.
 #
@@ -24,6 +24,34 @@ def equalStacks(h1, h2, h3):
         cyl[idx] -= ([h1, h2, h3][idx]).pop(0)
     return cyl[0]
            
+# first attempt. I misunderstood that stacks can be removed  
+# from any position in the cylinder as opposed to from the top. 
+# A more involved problem.
+
+# from itertools import combinations
+# def equalStacks(h1, h2, h3):
+#     stacks = [sorted(h1), sorted(h2), sorted(h3)]
+#     heights = [sum(h) for h in stacks]
+#     target = min(heights)
+#     t_idex = heights.index(target)
+#     reached = False   
+     
+#     while not reached:
+#         for h in stacks[:t_idex]+stacks[t_idex+1:]:
+#             diff = [i for i in h if i <= sum(h)-target]
+
+#             for i in range(1, len(diff)):
+#                 for comb in combinations(diff, i):
+                    
+#                     if sum(comb) == sum(h)-target:                     
+#                         reached = True
+#                         break
+#                 if reached: break
+        
+#         if not reached: 
+#             stacks[t_idex].pop(0)
+#             target = sum(stacks[t_idex])
+#     return target
         
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
